@@ -1,5 +1,6 @@
 package com.bank.bms.user;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -26,5 +27,10 @@ public class UserController {
         return ResponseEntity.ok(updatedUser);
     }
 
-    
+    @PostMapping("/login")
+    public ResponseEntity<User> login(@RequestBody LoginRequestDto request, HttpSession session){
+        User loggedUser = userService.userLogin(request.getEmail(), request.getPassword());
+        session.setAttribute("LOGGED_IN_USER", loggedUser.getId());
+        return new ResponseEntity<>(loggedUser, HttpStatus.OK);
+    }
 }
