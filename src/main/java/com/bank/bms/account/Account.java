@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 
 import com.bank.bms.user.User;
+
+@Table(name="accounts")
 @Entity
 @Data
 @AllArgsConstructor
