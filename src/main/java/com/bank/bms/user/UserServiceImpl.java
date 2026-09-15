@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService{
 
     @Transactional
     @Override
-    public User updatedUser(Long id, User user){
+    public User updateUser(Long id, User user){
         User existing = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
